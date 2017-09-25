@@ -74,7 +74,7 @@ public class Driver {
 			    }
 			}
 		}
-		double learningRate = 0.1;
+		double learningRate = 0.01;
 		System.out.println("Learning rate = " + learningRate);
 		
 		int success00 = 0;
@@ -239,7 +239,7 @@ public class Driver {
 		
 		System.out.println("\n");
 		
-		//Train
+//		//Train
 		double[] w = new double[69];
 		//initialize b
 		double b = 0.001;
@@ -250,9 +250,12 @@ public class Driver {
 		
 		int success = 0;
 		
-		for(int i = 0; i < epoch; i++) {
+		int timeStep = 0;
+		double dynamicLearningRate = learningRate;
+		
+		for(int i = 0; i < 18; i++) {
 			for(Model m : trainDataSet){
-				Tuple t = perceptronTrain1(m, w, b, learningRate, devDataSet);
+				Tuple t = perceptronTrain1(m, w, b, dynamicLearningRate, devDataSet);
 				b = t.b;
 				update += t.update;
 			}
@@ -268,6 +271,8 @@ public class Driver {
 			double accuracy = (double) devSuccess / (double) devDataSet.size();
 			
 			System.out.println("Accuracy at " + (i+1) + " epoch = " + accuracy);
+			timeStep++;
+			dynamicLearningRate = learningRate / (1+timeStep);
 		}
 		
 		
@@ -281,14 +286,15 @@ public class Driver {
 		
 		System.out.println("Accuracy = " + (double)success / (double)testDataSet.size());
 		System.out.println("Update = " + update);
-		
+//		
 		System.out.println("Done");
 		
 	}
 	
 	public static double perceptronTrain(Model data, int maxIter, double[] w, double b, double learningRate) {
 		double sum = 0;
-		
+		double dynamicLearningRate = learningRate;
+		int timeStep = 0;
 		for(int i = 0; i < maxIter; i++) {
 			for(int j = 0; j < w.length; j++) {
 				if(data.featureVector.containsKey(j)){
@@ -300,11 +306,13 @@ public class Driver {
 			if(sum * data.labelVal <= 0) {
 				for(int j = 0; j < w.length; j++) {
 					if(data.featureVector.containsKey(j)){
-						w[j] += learningRate * data.labelVal * data.featureVector.get(j);
+						w[j] += dynamicLearningRate * data.labelVal * data.featureVector.get(j);
 					}
 				}
 				b += data.labelVal;
 			}
+			timeStep++;
+			dynamicLearningRate = learningRate / (1 + timeStep);
 		}
 		return b;
 	}
@@ -312,6 +320,7 @@ public class Driver {
 	public static Tuple perceptronTrain1(Model data, double[] w, double b, double learningRate, List<Model> devDataSet) {
 		double sum = 0;
 		int update = 0;
+		
 		//iterate over epochs
 		int success = 0;
 		//a = wx+b
