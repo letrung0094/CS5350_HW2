@@ -11,7 +11,7 @@ public class Driver {
 
 	public static class Tuple {
 		public double b;
-		public int update;
+		public double update;
 		
 	}
 
@@ -78,43 +78,54 @@ public class Driver {
 		double mu = 0.01;
 		System.out.println("Learning rate = " + learningRate);
 		System.out.println("Margin mu = " + mu);
-		int success00 = 0;
-		int total00 = 0;
-		
-		int success01 = 0;
-		int total01 = 0;
-		
-		int success02 = 0;
-		int total02 = 0;
-		
-		int success03 = 0;
-		int total03 = 0;
-		
-		int success04 = 0;
-		int total04 = 0;
-		
-		int epoch = 10;
-		
+//		int success00 = 0;
+//		int total00 = 0;
+//		
+//		int success01 = 0;
+//		int total01 = 0;
+//		
+//		int success02 = 0;
+//		int total02 = 0;
+//		
+//		int success03 = 0;
+//		int total03 = 0;
+//		
+//		int success04 = 0;
+//		int total04 = 0;
+//		
+//		int epoch = 10;
+//		
 //		for(int i = 0; i < 5; i++) {
 //			//initialize w
 //			double[] w = new double[69];
+//			double[] a = new double[69];
 //			//initialize b
 //			double b = 0.001;
-//			
+//			 double ba = 0;
+//
 //			switch(i){
 //				case 0:
-//					//System.out.println("Testing on 00");
+//					System.out.println("Testing on 00");
 //					for(Model m : training01DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
+//						
 //					}
 //					for(Model m : training02DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training03DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training04DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //
 //					
@@ -126,22 +137,30 @@ public class Driver {
 //						total00++;
 //					}
 //					
-//					//System.out.println("Success = " + success00 + "/" + total00);
+//					System.out.println("Success = " + success00 + "/" + total00);
 //					
 //					break;
 //				case 1:
-//					//System.out.println("Testing on 01");
+//					System.out.println("Testing on 01");
 //					for(Model m : training00DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training02DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training03DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training04DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					
 //					for(Model m : training01DataSet){
@@ -152,21 +171,29 @@ public class Driver {
 //						total01++;
 //					}
 //					
-//					//System.out.println("Success = " + success01 + "/" + total01);
+//					System.out.println("Success = " + success01 + "/" + total01);
 //					break;
 //				case 2:
-//					//System.out.println("Testing on 02");
+//					System.out.println("Testing on 02");
 //					for(Model m : training01DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training00DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training03DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training04DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					
 //					for(Model m : training02DataSet){
@@ -177,21 +204,29 @@ public class Driver {
 //						total02++;
 //					}
 //					
-//					//System.out.println("Success = " + success02 + "/" + total02);
+//					System.out.println("Success = " + success02 + "/" + total02);
 //					break;
 //				case 3:
-//					//System.out.println("Testing on 03");
+//					System.out.println("Testing on 03");
 //					for(Model m : training01DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training02DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training00DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training04DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					
 //					for(Model m : training03DataSet){
@@ -202,21 +237,29 @@ public class Driver {
 //						total03++;
 //					}
 //					
-//					//System.out.println("Success = " + success03 + "/" + total03);
+//					System.out.println("Success = " + success03 + "/" + total03);
 //					break;
 //				case 4:
-//					//System.out.println("Testing on 04");
+//					System.out.println("Testing on 04");
 //					for(Model m : training01DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training02DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training03DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					for(Model m : training00DataSet){
-//						b = perceptronTrain(m, epoch, w, b, learningRate, mu);
+//						Tuple t = perceptronTrain(m, epoch, w, b, learningRate, mu, a,ba);
+//						b = t.b;
+//						ba = t.update;
 //					}
 //					
 //					for(Model m : training04DataSet){
@@ -227,7 +270,7 @@ public class Driver {
 //						total04++;
 //					}
 //					
-//					//System.out.println("Success = " + success04 + "/" + total04);
+//					System.out.println("Success = " + success04 + "/" + total04);
 //					break;
 //			}
 //		}
@@ -245,7 +288,7 @@ public class Driver {
 		//initialize b
 		double b = 0.001;
 		
-		epoch = 20;
+		double epoch = 20;
 		
 		int update = 0;
 		
@@ -287,15 +330,14 @@ public class Driver {
 		
 		System.out.println("Accuracy = " + (double)success / (double)testDataSet.size());
 		System.out.println("Update = " + update);
-//		
+		
 		System.out.println("Done");
 		
 	}
 	
-	public static double perceptronTrain(Model data, int maxIter, double[] w, double b, double learningRate, double mu) {
+	public static Tuple perceptronTrain(Model data, int maxIter, double[] w, double b, double learningRate, double mu, double[] a, double ba) {
 		double sum = 0;
 		double dynamicLearningRate = learningRate;
-		int timeStep = 0;
 		for(int i = 0; i < maxIter; i++) {
 			for(int j = 0; j < w.length; j++) {
 				if(data.featureVector.containsKey(j)){
@@ -312,10 +354,20 @@ public class Driver {
 				}
 				b += data.labelVal;
 			}
-			timeStep++;
-			dynamicLearningRate = learningRate / (1 + timeStep);
+			//timeStep++;
+			//dynamicLearningRate = learningRate / (1 + timeStep);
+			for(int j = 0; j < w.length; j++) {
+				w[i] += a[i];
+			}
+			ba += b;
+			
 		}
-		return b;
+		
+
+		Tuple t = new Tuple();
+		t.b = b;
+		t.update = ba;
+		return t;
 	}
 	
 	public static Tuple perceptronTrain1(Model data, double[] w, double b, double learningRate, List<Model> devDataSet, double mu) {
